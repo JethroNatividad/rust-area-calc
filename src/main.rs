@@ -44,9 +44,31 @@ mod tests {
         assert_eq!(convert_to_square_meters(25.0), 2.323);
     }
 
-    
 }
 
+use std::io;
+use std::io::Write;
+
 fn main() {
-    println!("Hello world!");
+
+    print!("What is the length of the room in feet? ");
+    let mut length = String::new();
+    io::stdout().flush().unwrap();
+    io::stdin().read_line(&mut length).expect("Failed to read input");
+    let length: f64 = length.trim().parse().expect("Please enter a valid number");
+
+    print!("What is the width of the room in feet? ");
+    let mut width = String::new();
+    io::stdout().flush().unwrap();
+    io::stdin().read_line(&mut width).expect("Failed to read input");
+    let width: f64 = width.trim().parse().expect("Please enter a valid number");
+
+    let area_sqft: f64 = calculate_area_feet(length, width);
+    let area_sqm: f64 = convert_to_square_meters(area_sqft);
+
+    println!("You entered dimensions of {} feet by {} feet.", length, width);
+    println!("The area is");
+    println!("{} square feet", area_sqft);
+    println!("{} square meters", area_sqm);
+
 }
