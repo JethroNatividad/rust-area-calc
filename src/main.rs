@@ -49,7 +49,6 @@ use std::io;
 use std::io::Write;
 
 fn main() {
-
     print!("What is the length of the room in feet? ");
     let mut length = String::new();
     io::stdout().flush().unwrap();
